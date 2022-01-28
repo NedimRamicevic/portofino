@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:portofino/screens/services/auth.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
+
+  AuthService get _auth => AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,11 @@ class Home extends StatelessWidget {
         title: Text("Welcome Home"),
         actions: [
           ElevatedButton.icon(
-              onPressed: null, icon: Icon(Icons.person), label: Text("logout"))
+              onPressed: () async {
+                await _auth.signOut();
+              },
+              icon: Icon(Icons.person),
+              label: Text("logout"))
         ],
       ),
     );
