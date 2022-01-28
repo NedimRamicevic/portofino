@@ -13,6 +13,7 @@ class AuthService {
     try {
       UserCredential result = await _auth.signInAnonymously();
       User user = result.user;
+      print("ben burdayım");
       return user;
     } catch (e) {
       print(e.toString());
