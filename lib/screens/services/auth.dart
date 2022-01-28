@@ -1,8 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:portofino/models/user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   //sign in anon
+
+  Stream<User> get user {
+    return _auth.authStateChanges();
+  }
 
   Future signInAnon() async {
     try {
