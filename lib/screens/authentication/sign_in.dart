@@ -32,14 +32,22 @@ class _SignInState extends State<SignIn> {
               height: 20,
             ),
             TextFormField(
-              onChanged: (val) {},
+              onChanged: (val) {
+                setState(() {
+                  email = val;
+                });
+              },
             ),
             SizedBox(
               height: 20,
             ),
             TextFormField(
               obscureText: true,
-              onChanged: (val) {},
+              onChanged: (val) {
+                setState(() {
+                  password = val;
+                });
+              },
             ),
             SizedBox(
               height: 20,
@@ -48,7 +56,10 @@ class _SignInState extends State<SignIn> {
                 style: ElevatedButton.styleFrom(
                     primary: Colors.purple,
                     padding: EdgeInsets.symmetric(horizontal: 20)),
-                onPressed: () async {},
+                onPressed: () async {
+                  print(email);
+                  print(password);
+                },
                 child: Text(
                   "Sign In",
                   style: TextStyle(color: Colors.white),
