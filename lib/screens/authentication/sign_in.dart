@@ -11,6 +11,9 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
 
+  String email = "";
+  String password = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,16 +25,36 @@ class _SignInState extends State<SignIn> {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
-        child: ElevatedButton(
-            onPressed: () async {
-              dynamic result = await _auth.signInAnon();
-              if (result == null) {
-                print("Error");
-              } else {
-                print("Signed In as $result");
-              }
-            },
-            child: Text("Sign In Anon")),
+        child: Form(
+            child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              onChanged: (val) {},
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              obscureText: true,
+              onChanged: (val) {},
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.purple,
+                    padding: EdgeInsets.symmetric(horizontal: 20)),
+                onPressed: () async {},
+                child: Text(
+                  "Sign In",
+                  style: TextStyle(color: Colors.white),
+                ))
+          ],
+        )),
       ),
     );
   }
