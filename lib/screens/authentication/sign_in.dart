@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portofino/screens/authentication/register.dart';
 import 'package:portofino/screens/services/auth.dart';
 
 class SignIn extends StatefulWidget {
@@ -52,18 +53,38 @@ class _SignInState extends State<SignIn> {
             SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.purple,
-                    padding: EdgeInsets.symmetric(horizontal: 20)),
-                onPressed: () async {
-                  print(email);
-                  print(password);
-                },
-                child: Text(
-                  "Sign In",
-                  style: TextStyle(color: Colors.white),
-                ))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.purple,
+                        padding: EdgeInsets.symmetric(horizontal: 20)),
+                    onPressed: () async {
+                      print(email);
+                      print(password);
+                    },
+                    child: Text(
+                      "Sign In",
+                      style: TextStyle(color: Colors.white),
+                    )),
+                SizedBox(
+                  width: 20,
+                ),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.purple,
+                        padding: EdgeInsets.symmetric(horizontal: 20)),
+                    onPressed: () async {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Register()));
+                    },
+                    child: Text(
+                      "Register",
+                      style: TextStyle(color: Colors.white),
+                    )),
+              ],
+            )
           ],
         )),
       ),
