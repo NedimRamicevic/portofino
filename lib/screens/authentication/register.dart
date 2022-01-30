@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:portofino/screens/services/auth.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
-
+  const Register({Key? key, required this.setifSignIn}) : super(key: key);
+  final Function setifSignIn;
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -18,6 +18,16 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.redAccent,
+                  padding: EdgeInsets.symmetric(horizontal: 20)),
+              onPressed: () {
+                widget.setifSignIn();
+              },
+              child: Text("Sign In"))
+        ],
         elevation: 0,
         title: Text("Register"),
         backgroundColor: Colors.amberAccent,

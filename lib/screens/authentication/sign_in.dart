@@ -3,8 +3,8 @@ import 'package:portofino/screens/authentication/register.dart';
 import 'package:portofino/screens/services/auth.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
-
+  const SignIn({Key? key, required this.setifSignIn}) : super(key: key);
+  final Function setifSignIn;
   @override
   _SignInState createState() => _SignInState();
 }
@@ -20,6 +20,19 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       backgroundColor: Colors.amber,
       appBar: AppBar(
+        actions: [
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.purple,
+                  padding: EdgeInsets.symmetric(horizontal: 20)),
+              onPressed: () {
+                widget.setifSignIn();
+              },
+              child: Text(
+                "Register",
+                style: TextStyle(color: Colors.white),
+              )),
+        ],
         backgroundColor: Colors.amberAccent,
         elevation: 0,
         title: const Text("Sign In"),
@@ -51,39 +64,22 @@ class _SignInState extends State<SignIn> {
               },
             ),
             SizedBox(
-              height: 20,
+              height: 35,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.purple,
-                        padding: EdgeInsets.symmetric(horizontal: 20)),
-                    onPressed: () async {
-                      print(email);
-                      print(password);
-                    },
-                    child: Text(
-                      "Sign In",
-                      style: TextStyle(color: Colors.white),
-                    )),
-                SizedBox(
-                  width: 20,
-                ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.purple,
-                        padding: EdgeInsets.symmetric(horizontal: 20)),
-                    onPressed: () async {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Register()));
-                    },
-                    child: Text(
-                      "Register",
-                      style: TextStyle(color: Colors.white),
-                    )),
-              ],
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.purple,
+                    padding: EdgeInsets.symmetric(horizontal: 20)),
+                onPressed: () async {
+                  print(email);
+                  print(password);
+                },
+                child: Text(
+                  "Sign In",
+                  style: TextStyle(color: Colors.white),
+                )),
+            SizedBox(
+              width: 20,
             )
           ],
         )),
