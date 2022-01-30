@@ -13,6 +13,7 @@ class _RegisterState extends State<Register> {
   final GlobalKey<FormState> _registerKey = GlobalKey<FormState>();
   String email = "";
   String password = "";
+  String error = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,15 +55,28 @@ class _RegisterState extends State<Register> {
                   },
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
+                ),
+                Text(
+                  error,
+                  style: TextStyle(color: Colors.red),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.purple),
                   child: Text("Register"),
                   onPressed: () async {
                     if (_registerKey.currentState!.validate()) {
-                      print(email);
-                      print(password);
+                      dynamic result = await _auth
+                          .createUserWithEmailAndPassword(email, password);
+                      if (result == null) {
+                        print("naber");
+                        setState(() {
+                          error = "enter a valid email";
+                        });
+                      }
                     }
                   },
                 )
