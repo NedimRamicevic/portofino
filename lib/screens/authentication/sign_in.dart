@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portofino/screens/services/auth.dart';
+import 'package:portofino/shared/constants.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key, required this.setifSignIn}) : super(key: key);
@@ -48,14 +49,9 @@ class _SignInState extends State<SignIn> {
                   height: 20,
                 ),
                 TextFormField(
-                  decoration: InputDecoration(
-                      hintText: "E-mail",
-                      fillColor: Colors.amber.shade300,
-                      filled: true,
-                      enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.amber)),
-                      focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.redAccent))),
+                  decoration: textInputDecoration.copyWith(
+                    hintText: "E-mail",
+                  ),
                   onChanged: (val) {
                     setState(() {
                       email = val;
@@ -66,14 +62,9 @@ class _SignInState extends State<SignIn> {
                   height: 20,
                 ),
                 TextFormField(
-                  decoration: InputDecoration(
-                      hintText: "Password",
-                      fillColor: Colors.amber.shade300,
-                      filled: true,
-                      enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.amber)),
-                      focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.redAccent))),
+                  decoration: textInputDecoration.copyWith(
+                    hintText: "Password",
+                  ),
                   obscureText: true,
                   onChanged: (val) {
                     setState(() {

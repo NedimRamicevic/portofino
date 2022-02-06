@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portofino/screens/services/auth.dart';
+import 'package:portofino/shared/constants.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key, required this.setifSignIn}) : super(key: key);
@@ -43,7 +44,9 @@ class _RegisterState extends State<Register> {
                   height: 20,
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "E-mail"),
+                  decoration: textInputDecoration.copyWith(
+                    hintText: "E-mail",
+                  ),
                   validator: (value) =>
                       value!.isEmpty ? "write an email" : null,
                   onChanged: (val) async {
@@ -56,7 +59,9 @@ class _RegisterState extends State<Register> {
                   height: 20,
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Password"),
+                  decoration: textInputDecoration.copyWith(
+                    hintText: "Password",
+                  ),
                   validator: (value) =>
                       value!.length < 6 ? "at least 6 characters" : null,
                   obscureText: true,
