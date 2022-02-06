@@ -13,14 +13,14 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.amber,
         elevation: 0,
-        title: Text("Welcome Home"),
+        title: const Text("Welcome Home"),
         actions: [
           ElevatedButton.icon(
               onPressed: () async {
                 await _auth.signOut();
               },
-              icon: Icon(Icons.person),
-              label: Text("logout"))
+              icon: const Icon(Icons.person),
+              label: const Text("logout"))
         ],
       ),
     );
