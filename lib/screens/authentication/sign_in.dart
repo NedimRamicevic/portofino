@@ -48,6 +48,14 @@ class _SignInState extends State<SignIn> {
                   height: 20,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(
+                      hintText: "E-mail",
+                      fillColor: Colors.amber.shade300,
+                      filled: true,
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.amber)),
+                      focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.redAccent))),
                   onChanged: (val) {
                     setState(() {
                       email = val;
@@ -58,6 +66,14 @@ class _SignInState extends State<SignIn> {
                   height: 20,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(
+                      hintText: "Password",
+                      fillColor: Colors.amber.shade300,
+                      filled: true,
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.amber)),
+                      focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.redAccent))),
                   obscureText: true,
                   onChanged: (val) {
                     setState(() {
