@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:portofino/screens/services/auth.dart';
 import 'package:portofino/screens/wrapper.dart';

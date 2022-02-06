@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:portofino/models/user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -13,7 +12,6 @@ class AuthService {
     try {
       UserCredential result = await _auth.signInAnonymously();
       User user = result.user;
-      print("ben burdayım");
       return user;
     } catch (e) {
       print(e.toString());
@@ -28,7 +26,7 @@ class AuthService {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
-      print("$user Signed In");
+
       return user;
     } catch (e) {
       print(e.toString());
@@ -42,7 +40,6 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
-      print("$user Registered");
       return user;
     } catch (e) {
       print(e.toString());

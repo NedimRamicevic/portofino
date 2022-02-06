@@ -22,27 +22,28 @@ class _RegisterState extends State<Register> {
           ElevatedButton(
               style: ElevatedButton.styleFrom(
                   primary: Colors.redAccent,
-                  padding: EdgeInsets.symmetric(horizontal: 20)),
+                  padding: const EdgeInsets.symmetric(horizontal: 20)),
               onPressed: () {
                 widget.setifSignIn();
               },
-              child: Text("Sign In"))
+              child: const Text("Sign In"))
         ],
         elevation: 0,
-        title: Text("Register"),
+        title: const Text("Register"),
         backgroundColor: Colors.amberAccent,
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
         color: Colors.amberAccent[400],
         child: Form(
             key: _registerKey,
             child: Column(
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(hintText: "E-mail"),
                   validator: (value) =>
                       value!.isEmpty ? "write an email" : null,
                   onChanged: (val) async {
@@ -51,10 +52,11 @@ class _RegisterState extends State<Register> {
                     });
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(hintText: "Password"),
                   validator: (value) =>
                       value!.length < 6 ? "at least 6 characters" : null,
                   obscureText: true,
@@ -64,25 +66,24 @@ class _RegisterState extends State<Register> {
                     });
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   error,
-                  style: TextStyle(color: Colors.red),
+                  style: const TextStyle(color: Colors.red),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.purple),
-                  child: Text("Register"),
+                  child: const Text("Register"),
                   onPressed: () async {
                     if (_registerKey.currentState!.validate()) {
                       dynamic result = await _auth
                           .createUserWithEmailAndPassword(email, password);
                       if (result == null) {
-                        print("naber");
                         setState(() {
                           error = "enter a valid email";
                         });

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portofino/screens/authentication/register.dart';
 import 'package:portofino/screens/services/auth.dart';
 
 class SignIn extends StatefulWidget {
@@ -12,7 +11,6 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final GlobalKey<FormState> _registerKey = GlobalKey<FormState>();
-
 
   String email = "";
   String password = "";
@@ -27,11 +25,11 @@ class _SignInState extends State<SignIn> {
           ElevatedButton(
               style: ElevatedButton.styleFrom(
                   primary: Colors.purple,
-                  padding: EdgeInsets.symmetric(horizontal: 20)),
+                  padding: const EdgeInsets.symmetric(horizontal: 20)),
               onPressed: () {
                 widget.setifSignIn();
               },
-              child: Text(
+              child: const Text(
                 "Register",
                 style: TextStyle(color: Colors.white),
               )),
@@ -43,49 +41,61 @@ class _SignInState extends State<SignIn> {
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
         child: Form(
-          key: _registerKey,
+            key: _registerKey,
             child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              onChanged: (val) {
-                setState(() {
-                  email = val;
-                });
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              obscureText: true,
-              onChanged: (val) {
-                setState(() {
-                  password = val;
-                });
-              },
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.purple,
-                    padding: EdgeInsets.symmetric(horizontal: 20)),
-                onPressed: () async {
-                  if()
-                },
-                child: Text(
-                  "Sign In",
-                  style: TextStyle(color: Colors.white),
-                )),
-            SizedBox(
-              width: 20,
-            )
-          ],
-        )),
+              children: <Widget>[
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  onChanged: (val) {
+                    setState(() {
+                      email = val;
+                    });
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  obscureText: true,
+                  onChanged: (val) {
+                    setState(() {
+                      password = val;
+                    });
+                  },
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(error),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.purple,
+                        padding: const EdgeInsets.symmetric(horizontal: 20)),
+                    onPressed: () async {
+                      if (_registerKey.currentState!.validate()) {
+                        dynamic result = await _auth.signInWithEmailAndPassword(
+                            email, password);
+                        if (result == null) {
+                          setState(() {
+                            error = "wrong email or password";
+                          });
+                        }
+                      }
+                    },
+                    child: const Text(
+                      "Sign In",
+                      style: TextStyle(color: Colors.white),
+                    )),
+                const SizedBox(
+                  width: 20,
+                )
+              ],
+            )),
       ),
     );
   }
