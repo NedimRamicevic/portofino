@@ -23,13 +23,26 @@ class AuthService {
 
   //sign in with email & password
 
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      User user = result.user;
+      print("$user Signed In");
+      return user;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
   //register with email & password
   Future createUserWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
-      print(user);
+      print("$user Registered");
       return user;
     } catch (e) {
       print(e.toString());

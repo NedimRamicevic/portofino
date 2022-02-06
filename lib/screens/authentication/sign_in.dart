@@ -11,9 +11,12 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
+  final GlobalKey<FormState> _registerKey = GlobalKey<FormState>();
+
 
   String email = "";
   String password = "";
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +43,7 @@ class _SignInState extends State<SignIn> {
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
         child: Form(
+          key: _registerKey,
             child: Column(
           children: <Widget>[
             SizedBox(
@@ -71,8 +75,7 @@ class _SignInState extends State<SignIn> {
                     primary: Colors.purple,
                     padding: EdgeInsets.symmetric(horizontal: 20)),
                 onPressed: () async {
-                  print(email);
-                  print(password);
+                  if()
                 },
                 child: Text(
                   "Sign In",
