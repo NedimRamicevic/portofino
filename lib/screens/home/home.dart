@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portofino/screens/services/auth.dart';
+import 'package:portofino/services/auth.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

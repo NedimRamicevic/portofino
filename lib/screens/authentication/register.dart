@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portofino/screens/services/auth.dart';
+import 'package:portofino/services/auth.dart';
 import 'package:portofino/shared/constants.dart';
 import 'package:portofino/shared/loading.dart';
 

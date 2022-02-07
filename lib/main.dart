@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portofino/screens/services/auth.dart';
+import 'package:portofino/services/auth.dart';
 import 'package:portofino/screens/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';

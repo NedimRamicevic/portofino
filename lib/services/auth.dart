@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:portofino/services/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -23,10 +24,11 @@ class AuthService {
 
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
+      print("asdasdasd");
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
-
+      await DataBaseService(uid: user.uid).updateUser("new member", "0", 100);
       return user;
     } catch (e) {
       print(e.toString());
