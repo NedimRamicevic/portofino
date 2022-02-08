@@ -18,4 +18,8 @@ class DataBaseService {
         {'name': name, 'sugar': sugar, 'strength': strength},
         SetOptions(merge: true));
   }
+
+  Stream<QuerySnapshot> get brews {
+    return brewCollection.snapshots();
+  }
 }
