@@ -28,7 +28,7 @@ class AuthService {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
-      await DataBaseService(uid: user.uid).updateUser("new member", "0", 100);
+      await DataBaseService(uid: user.uid).updateUser();
       return user;
     } catch (e) {
       print(e.toString());

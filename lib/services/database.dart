@@ -9,7 +9,10 @@ class DataBaseService {
 
   DataBaseService({required this.uid});
 
-  Future updateUser(String name, String sugar, int strength) async {
+  Future updateUser(
+      {String name = "new member",
+      String sugar = "0",
+      int strength = 100}) async {
     print("selamns");
     return await brewCollection.doc(uid).set(
         {'name': name, 'sugar': sugar, 'strength': strength},
