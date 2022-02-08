@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:portofino/screens/home/brew_list.dart';
 import 'package:portofino/services/auth.dart';
 import 'package:portofino/services/database.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,7 @@ class Home extends StatelessWidget {
                 label: const Text("logout"))
           ],
         ),
-        body: ,
+        body: const BrewList(),
       ),
     );
   }

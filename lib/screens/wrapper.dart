@@ -16,10 +16,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return const Authenticate();
     } else {
-      return StreamProvider.value(
-          value: DataBaseService(uid: user.uid).brews,
-          initialData: null,
-          child: const Home());
+      return const Home();
     }
   }
 }
