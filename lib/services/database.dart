@@ -19,6 +19,8 @@ class DataBaseService {
         SetOptions(merge: true));
   }
 
+  Future getUserSettings()
+
   List<Brew> _brewListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((e) {
       return Brew(name: e['name'], sugar: e["sugar"], strength: e["strength"]);
