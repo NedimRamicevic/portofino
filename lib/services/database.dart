@@ -29,9 +29,9 @@ class DataBaseService {
   UserData _userDataSnapshot(DocumentSnapshot snapshot) {
     return UserData(
         uid: uid,
-        name: snapshot.get("name"),
-        sugars: snapshot.get("sugar"),
-        strength: snapshot.get("strength"));
+        name: snapshot.data()["name"],
+        sugars: snapshot.data()["sugar"],
+        strength: snapshot.data()["strength"]);
   }
 
   Stream<List<Brew>> get brews {
