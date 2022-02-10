@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:portofino/models/brew.dart';
+import 'package:portofino/models/user.dart';
 
 class DataBaseService {
   // reference to collection
@@ -25,11 +26,19 @@ class DataBaseService {
     }).toList();
   }
 
+  UserData _userDataSnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+        uid: uid,
+        name: snapshot.get("name"),
+        sugars: snapshot.get("sugar"),
+        strength: snapshot.get("strength"));
+  }
+
   Stream<List<Brew>> get brews {
     return brewCollection.snapshots().map(_brewListFromSnapshot);
   }
 
-  Stream<DocumentSnapshot> get userData {
-    return brewCollection.doc(uid).snapshots().map((event) => null);
+  Stream<UserData> get userData {
+    return brewCollection.doc(uid).snapshots().map(_userDataSnapshot);
   }
 }
