@@ -28,4 +28,8 @@ class DataBaseService {
   Stream<List<Brew>> get brews {
     return brewCollection.snapshots().map(_brewListFromSnapshot);
   }
+
+  Stream<DocumentSnapshot> get userData {
+    return brewCollection.doc(uid).snapshots().map((event) => null);
+  }
 }
