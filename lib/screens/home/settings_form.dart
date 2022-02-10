@@ -47,13 +47,16 @@ class _SettingsFormState extends State<SettingsForm> {
                     height: 10,
                   ),
                   DropdownButtonFormField(
-                    value: _currentSugars ?? userData.sugars,
                     decoration: textInputDecoration,
-                    hint: const Text("Choose Sugar Amount"),
                     items: sugars.map((sugar) {
                       return DropdownMenuItem(
                           value: sugar, child: Text("$sugar sugars"));
                     }).toList(),
+                    onSaved: (val) {
+                      setState(() {
+                        _currentSugars = val.toString();
+                      });
+                    },
                     onChanged: (val) {
                       setState(() {
                         _currentSugars = val.toString();
@@ -64,10 +67,13 @@ class _SettingsFormState extends State<SettingsForm> {
                     height: 10,
                   ),
                   Slider(
-                      value: _currentStrength?.toDouble() ??
-                          userData.strength.toDouble(),
-                      activeColor: Colors.brown[_currentStrength!],
-                      inactiveColor: Colors.brown[_currentStrength!],
+                      value: _currentStrength?.toDouble() != null
+                          ? _currentStrength!.toDouble()
+                          : userData.strength.toDouble(),
+                      activeColor:
+                          Colors.brown[_currentStrength ?? userData.strength],
+                      inactiveColor:
+                          Colors.brown[_currentStrength ?? userData.strength],
                       min: 100,
                       max: 900,
                       divisions: 8,
@@ -89,7 +95,9 @@ class _SettingsFormState extends State<SettingsForm> {
                 ],
               ),
             );
-          } else {}
+          } else {
+            return Container();
+          }
         });
   }
 }
