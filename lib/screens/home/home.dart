@@ -30,18 +30,17 @@ class Home extends StatelessWidget {
       value: DataBaseService(uid: user.uid).brews,
       initialData: null,
       child: Scaffold(
-        backgroundColor: Colors.amberAccent,
         appBar: AppBar(
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.brown,
           elevation: 0,
           title: const Text(
             "Welcome Home",
-            style: TextStyle(color: Colors.red),
+            style: TextStyle(color: Colors.white),
           ),
           actions: [
             ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.amber,
+                  primary: Colors.brown,
                   onPrimary: Colors.black,
                   elevation: 0,
                 ),
@@ -52,7 +51,7 @@ class Home extends StatelessWidget {
                 label: const Text("logout")),
             ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.amber,
+                  primary: Colors.brown,
                   onPrimary: Colors.black,
                   elevation: 0,
                 ),
