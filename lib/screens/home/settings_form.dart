@@ -35,7 +35,7 @@ class _SettingsFormState extends State<SettingsForm> {
               key: _formKey,
               child: Column(
                 children: [
-                  Text("Update Your Settings"),
+                  const Text("Update Your Settings"),
                   const SizedBox(
                     height: 20,
                   ),
@@ -97,7 +97,7 @@ class _SettingsFormState extends State<SettingsForm> {
                           );
                         }
                       },
-                      child: Text("Update")),
+                      child: const Text("Update")),
                 ],
               ),
             );
