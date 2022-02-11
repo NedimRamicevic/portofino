@@ -24,11 +24,9 @@ class AuthService {
 
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
-      print("asdasdasd");
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
-      await DataBaseService(uid: user.uid).updateUser();
       return user;
     } catch (e) {
       print(e.toString());
@@ -42,6 +40,7 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
+      await DataBaseService(uid: user.uid).updateUser();
       return user;
     } catch (e) {
       print(e.toString());

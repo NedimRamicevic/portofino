@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portofino/models/user.dart';
 import 'package:portofino/services/database.dart';
 import 'package:portofino/shared/constants.dart';
+import 'package:portofino/shared/loading.dart';
 import 'package:provider/provider.dart';
 
 class SettingsForm extends StatefulWidget {
@@ -48,6 +49,7 @@ class _SettingsFormState extends State<SettingsForm> {
                   ),
                   DropdownButtonFormField(
                     decoration: textInputDecoration,
+                    hint: const Text("Choose Sugar Amount"),
                     items: sugars.map((sugar) {
                       return DropdownMenuItem(
                           value: sugar, child: Text("$sugar sugars"));
@@ -86,17 +88,21 @@ class _SettingsFormState extends State<SettingsForm> {
                     height: 10,
                   ),
                   ElevatedButton(
-                      onPressed: () {
-                        print(_currentName);
-                        print(_currentSugars);
-                        print(_currentStrength);
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          await DataBaseService(uid: user.uid).updateUser(
+                            name: _currentName ?? userData.name,
+                            sugar: _currentSugars ?? userData.sugars,
+                            strength: _currentStrength ?? userData.strength,
+                          );
+                        }
                       },
                       child: Text("Update")),
                 ],
               ),
             );
           } else {
-            return Container();
+            return const Loading();
           }
         });
   }

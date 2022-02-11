@@ -15,6 +15,7 @@ class DataBaseService {
       {String name = "new member",
       String sugar = "0",
       int strength = 100}) async {
+    print("naber");
     return await brewCollection.doc(uid).set(
         {'name': name, 'sugar': sugar, 'strength': strength},
         SetOptions(merge: true));

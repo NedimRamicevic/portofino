@@ -34,19 +34,34 @@ class Home extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.amber,
           elevation: 0,
-          title: const Text("Welcome Home"),
+          title: const Text(
+            "Welcome Home",
+            style: TextStyle(color: Colors.red),
+          ),
           actions: [
             ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.amber,
+                  onPrimary: Colors.black,
+                  elevation: 0,
+                ),
                 onPressed: () async {
                   await _auth.signOut();
                 },
                 icon: const Icon(Icons.person),
                 label: const Text("logout")),
             ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.amber,
+                  onPrimary: Colors.black,
+                  elevation: 0,
+                ),
                 onPressed: () {
                   _showSettingsPanel();
                 },
-                icon: const Icon(Icons.settings),
+                icon: const Icon(
+                  Icons.settings,
+                ),
                 label: const Text("Settings"))
           ],
         ),
