@@ -1,6 +1,6 @@
-# portofino
+<h1 align="center">Portofino<h5/>
 
-A flutter project that works with firebase. Simply you can register/sign in and set your personal preferences. The app stores all the data in firebase and pulls the necessary data from there.
+A flutter app that works with firebase. Simply you can register/sign in and set your personal preferences. The app stores all the data in firebase and pulls the necessary data from there.
 
 
 
